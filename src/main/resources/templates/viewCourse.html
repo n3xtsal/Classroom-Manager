@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" media="all" href="/a1Style.css" />
+</head>
+<body>
+	<h1>Course Details</h1>
+
+	<h2 th:text="${course.code} + ' - ' + ${course.name}"></h2>
+
+	<div th:if="${course.prof != null}">
+		<h2 th:text="'Professor ' + ${course.prof.name}"></h2>
+	</div>
+
+	<h3>Students Enrolled</h3>
+
+	<table border="1" th:if="${course.students != null}">
+
+		<tr>
+			<th>Student ID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<!-- <th>Delete Link</th> -->
+			<th>Delete Form</th>
+		</tr>
+		<tr th:each="s : ${course.students}">
+			<td th:text="${s.id}"></td>
+			<td th:text="${s.firstName}"></td>
+			<td th:text="${s.lastName}"></td>
+			<!-- <td><a th:href="@{/dropStu/{id}/{cId}(id=${s.id}, cId=${course.id})}">DROP</a></td> -->
+			<td>
+				<form action="/dropStudent">
+					<input type="hidden" th:value="${id}" name="cId"> <input
+						type="hidden" th:value="${s.id}" name="sId"> <input
+						type="submit" value="DROP">
+				</form>
+			</td>
+		</tr>
+
+	</table>
+
+	<br>
+
+	<a href="/">Root Page</a>
+	<br> <br>
+	<a href="/viewCourses">View Courses</a>
+
+</body>
+</html>

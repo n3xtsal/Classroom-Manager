@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{a1Style.css}" />
+</head>
+<body>
+	<h1>Professors</h1>
+
+	<table border="1">
+
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>More</th>
+		</tr>
+		<tr th:each="p : ${professors}">
+			<td th:text="${p.id}"></td>
+			<td th:text="${p.name}"></td>
+			<td><a th:href="@{/viewProf/{id}(id=${p.id})}">DETAILS</a></td>
+		</tr>
+
+	</table>
+
+	<br>
+
+	<a href="/">Root Page</a>
+	<br> <br>
+	<a href="/addProf">Add Professor</a>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{a1Style.css}" />
+</head>
+<body>
+	<h1>Students</h1>
+
+	<table border="1">
+
+		<tr>
+			<th>ID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>More</th>
+		</tr>
+		<tr th:each="s : ${students}">
+			<td th:text="${s.id}"></td>
+			<td th:text="${s.firstName}"></td>
+			<td th:text="${s.lastName}"></td>
+			<td><a th:href="@{/viewStudent/{id}(id=${s.id})}">DETAILS</a></td>
+		</tr>
+
+	</table>
+
+	<br>
+
+	<a href="/">Root Page</a>
+	<br> <br>
+	<a href="/addStudent">Add Student</a>
+
+</body>
+</html>

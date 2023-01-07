@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" media="all" href="/a1Style.css" />
+</head>
+<body>
+	<h1>Professor Details</h1>
+
+	<h2 th:text="${prof.name}"></h2>
+
+	<div th:if="${prof.courses != null}" th:each="c : ${prof.courses}">
+
+		<h3 th:text="${c.code} + ' - ' + ${c.name}"></h3>
+
+		<h3>Students</h3>
+
+		<table border="1" th:if="${c.students != null}">
+
+			<tr>
+				<th>Student ID</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+			</tr>
+			<tr th:each="s : ${c.students}">
+				<td th:text="${s.id}"></td>
+				<td th:text="${s.firstName}"></td>
+				<td th:text="${s.lastName}"></td>
+			</tr>
+
+		</table>
+
+	</div>
+
+	<br>
+
+	<a href="/">Root Page</a>
+	<br> <br>
+	<a href="/viewProfs">View Professors</a>
+
+</body>
+</html>

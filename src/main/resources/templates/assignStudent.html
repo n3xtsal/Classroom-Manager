@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" media="all" href="/a1Style.css" />
+</head>
+<body>
+
+<h1>Assign a Student to a Course</h1>
+
+	<form action="/assignStu" method="post">
+
+		Students - <select name="sId">
+			<option th:each="s : ${students}" th:value="${s.id}"
+				th:text="${s.firstName} + ' ' + ${s.lastName}">
+		</select> <br>
+		<br> Courses - <select name="cId">
+			<option th:each="c : ${courses}" th:value="${c.id}"
+				th:text="${c.name}">
+		</select> <br>
+		<br> <input type="submit" value="ASSIGN">
+
+	</form>
+	
+	<br>
+	
+	<a href="/">Root Page</a>
+	<br> <br>
+	<a href="/viewStudents">View Students</a>
+
+</body>
+</html>
